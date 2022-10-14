@@ -3,31 +3,31 @@
 const { resolve } = require('path')
 
 module.exports = {
-  entry: ['babel-polyfill', './app/main'],
+  entry: ['./app/main'],
   output: {
-    path: __dirname,
-    filename: './public/bundle.js'
+    path: __dirname + '/public',
+    filename: 'bundle.js',
   },
   mode: 'development',
   context: __dirname,
   devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
       {
         test: /jsx?$/,
         include: resolve(__dirname, './app'),
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+        },
       },
       {
         test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      }
-    ]
-  }
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
 }

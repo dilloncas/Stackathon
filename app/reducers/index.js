@@ -1,11 +1,10 @@
-
+import { createSlice } from '@reduxjs/toolkit'
 const initialState = {}
 
-const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state
-  }
-}
+const goodieBagSlice = createSlice({
+  name: 'goodiebag',
+  initialState,
+  reducers: {},
+})
 
-export default rootReducer
+export default goodieBagSlice
